@@ -50,7 +50,19 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'chrome',
+        'goog:chromeOptions': { // or 'moz:firefoxOptions' or 'wdio:chromedriverOptions'
+            binary: process.env.CHROME_PATH,
+            args: [
+                'disable-popup-blocking',
+                'disable-notifications',
+                'disable-infobars',
+                '--enable-automation'
+            ]
+        },
+        'wdio:chromedriverOptions': { // or 'wdio:geckodriverOptions', 'wdio:edgedriverOptions'
+            binary: process.env.CHROMEDRIVER_PATH // or 'geckodriver', 'msedgedriver'
+        }
     }],
 
     //
@@ -87,7 +99,7 @@ export const config = {
     // baseUrl: 'http://localhost:8080',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 20000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
