@@ -3,8 +3,8 @@ import { browser } from '@wdio/globals'
 describe('Login', () => {
     it('login dengan valid', async () => {
         await browser.url('https://timesheet.app.prosigmaka.com/app/timesheet-admin/placements-65a89dd0dda64114fdf4ce54')
-        await $('input[name="username"]').setValue('andinira25@gmail.com')
-        await $('input[name="password"]').setValue('kaepsong25')
+        await $('input[name="username"]').setValue('email terdaftar')
+        await $('input[name="password"]').setValue('password terdaftar')
         await $('button[type="submit"]').click()
         const judul = await $('div[class="sc-iZGRgC iMaXdc"]')
         expect (judul).toHaveText('Timesheet Admin')
